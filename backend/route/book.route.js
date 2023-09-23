@@ -2,7 +2,7 @@ const express = require("express");
 const {bookModel} = require("../model/book.model");
 const bookRoute = express.Router();
 
-// Add Book API
+
 bookRoute.post("/add", async (req, res) => {
   try {
     const book = new bookModel(req.body);
@@ -14,7 +14,6 @@ bookRoute.post("/add", async (req, res) => {
   }
 });
 
-// Retrieve Books API
 bookRoute.get("/", async (req, res) => {
   try {
     let query = {};
@@ -33,7 +32,7 @@ bookRoute.get("/", async (req, res) => {
   }
 });
 
-// Delete Book API
+
 bookRoute.delete("/del/:id", async (req, res) => {
   try {
     const book = await bookModel.findByIdAndDelete(req.params.id);
@@ -47,7 +46,7 @@ bookRoute.delete("/del/:id", async (req, res) => {
   }
 });
 
-// Filter Books API
+
 bookRoute.get("/filter", async (req, res) => {
   try {
     const books = await bookModel.find({ genre: req.query.genre });
@@ -58,7 +57,7 @@ bookRoute.get("/filter", async (req, res) => {
   }
 });
 
-// Sort Books API
+
 bookRoute.get("/sort", async (req, res) => {
   try {
     const sort = {};
